@@ -1,0 +1,12 @@
+name: 'NZP Paragraphs'
+type: module
+description: 'Migrating Paragraph Entities'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
+dependencies:
+  - migrate
+  - migrate_tools
+  - migrate_plus
+  - migrate_upgrade
+  - migrate_drupal

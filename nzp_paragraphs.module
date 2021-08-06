@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains nzp_paragraphs.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function nzp_paragraphs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the nzp_migrations module.
+    case 'help.page.nzp_migrations':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('config migration entities for migrating content from the nzp-public d7 site to d8') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,29 @@
+id: paragraph__entity_list
+label: 'Entity List Paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: entity_list
+process:
+  id: item_id
+  field_list_of_entities:
+    -
+      plugin: get
+      source: field_list_of_entities
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: entity_list
+
+migration_dependencies:
+  required: {  }
+  optional: {  }
+
+
+  

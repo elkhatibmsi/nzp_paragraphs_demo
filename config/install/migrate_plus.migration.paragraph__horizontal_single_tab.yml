@@ -1,0 +1,59 @@
+id: paragraph__horizontal_single_tab
+label: 'Horizontal Single Tab paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: horizontal_single_tab
+process:
+  id: item_id
+  field_h_tab_label: field_h_tab_label
+  field_h_tab_content: 
+  - plugin: sub_process
+    source: field_h_tab_content
+    process:
+      target_id:
+        - plugin: migration_lookup
+          migration: 
+            - paragraph__callout
+            - paragraph__card_grid
+            - paragraph__single_image_with_caption
+            - paragraph__text
+            - paragraph__webcam_embed
+          source: value
+        - plugin: extract
+          index:
+            - 0
+      target_revision_id:
+        - plugin: migration_lookup
+          migration:
+            - paragraph__callout
+            - paragraph__card_grid
+            - paragraph__single_image_with_caption
+            - paragraph__text
+            - paragraph__webcam_embed
+          source: value
+        - plugin: extract
+          index:
+            - 1
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: horizontal_single_tab
+
+migration_dependencies:
+  required:
+    - paragraph__callout
+    - paragraph__card_grid
+    - paragraph__single_image_with_caption
+    - paragraph__text
+    - paragraph__webcam_embed
+  optional: {  }
+
+
+  

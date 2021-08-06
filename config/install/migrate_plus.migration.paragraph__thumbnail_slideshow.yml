@@ -1,0 +1,43 @@
+id: paragraph__thumbnail_slideshow
+label: 'Thumbnail Slideshow tabs paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: thumbnail_slideshow
+process:
+  id: item_id
+  field_slideshow : 
+    - plugin: sub_process
+      source: field_slideshow
+      process:
+        target_id:
+          - plugin: migration_lookup
+            migration: paragraph__slide
+            source: value
+          - plugin: extract
+            index:
+              - 0
+        target_revision_id:
+          - plugin: migration_lookup
+            migration: paragraph__slide
+            source: value
+          - plugin: extract
+            index:
+              - 1
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: thumbnail_slideshow
+
+migration_dependencies:
+  required: 
+     - paragraph__slide
+  optional: {  }
+
+
+  

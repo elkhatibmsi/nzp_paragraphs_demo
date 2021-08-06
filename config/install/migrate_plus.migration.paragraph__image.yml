@@ -1,0 +1,45 @@
+id: paragraph__image
+label: 'slideshow paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+field_plugin_method: null
+cck_plugin_method: null
+source:
+  plugin: d7_paragraphs_item
+  bundle: image
+process:
+  id: item_id
+  field_image_collection : 
+  - plugin: sub_process
+    source: field_image_collection
+    process:
+      target_id:
+        - plugin: migration_lookup
+          migration: paragraph__image_collection
+          source: value
+        - plugin: extract
+          index:
+            - 0
+      target_revision_id:
+        - plugin: migration_lookup
+          migration: paragraph__image_collection
+          source: value
+        - plugin: extract
+          index:
+            - 1
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: image
+
+migration_dependencies:
+  required: 
+    - paragraph__image_collection
+  optional: {  }
+
+
+  

@@ -1,0 +1,39 @@
+id: paragraph__slide
+label: 'Slideshow Slide'
+migration_group: nzp_paragraphs
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_field_collection_item
+  key: migrate
+  field_name: field_slideshow
+process:
+  id: item_id
+  field_url: field_url
+  field_slide_caption: field_text
+  field_modal_content: field_modal_content
+  field_slide_image:
+    -
+      plugin: media_migration_delta_sort
+      source: field_slide_image
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: slideshow
+
+migration_dependencies:
+  required: {  }
+  optional: {  }
+
+
+  

@@ -1,0 +1,35 @@
+id: paragraph__card_item_blank
+label: 'Card Item Blank'
+migration_group: nzp_paragraphs
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: card_item_blank
+process:
+  id: item_id
+  field_card_item_blank_text: field_card_item_blank_text
+    # -
+    #   plugin: get
+    #   source: field_card_item_blank_text
+    # -
+    #   plugin: media_wysiwyg_filter
+    # -
+    #   plugin: img_tag_to_embed
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: card_item_blank
+
+migration_dependencies:
+  required: {  }
+  optional: {  }
+
+
+  

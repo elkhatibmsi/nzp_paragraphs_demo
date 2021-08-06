@@ -1,0 +1,33 @@
+id: paragraph__class_session
+label: 'Class Session'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+field_plugin_method: null
+cck_plugin_method: null
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_field_collection_item
+  field_name: field_class_session
+process:
+  id: item_id
+  field_schedule_description: field_schedule_description
+  field_dates: field_dates
+  field_company_url: field_company_url
+  field_is_sold_out: field_is_sold_out
+  field_starting_month: field_starting_month
+  field_times: field_times
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: class_session
+
+migration_dependencies:
+  required: {  }
+  optional: {  }
+
+
+  

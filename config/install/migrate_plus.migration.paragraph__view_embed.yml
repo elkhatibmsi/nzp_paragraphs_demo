@@ -1,0 +1,27 @@
+id: paragraph__view_embed
+label: 'View Embed paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+field_plugin_method: null
+cck_plugin_method: null
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: view_embed
+process:
+  id: item_id
+  field_view_embed_title: field_text
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: view_embed
+
+migration_dependencies:
+  required: {  }
+  optional: {  }
+
+
+  

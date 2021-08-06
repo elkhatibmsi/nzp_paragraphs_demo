@@ -1,0 +1,45 @@
+id: paragraph__flipbook_grid
+label: 'flipbook grid paragraph'
+migration_group: nzp_paragraphs
+migration_tags:
+  - Paragraphs
+dependencies:
+  enforced:
+    module:
+      - nzp_paragraphs
+source:
+  plugin: d7_paragraphs_item
+  bundle: flipbook_grid
+process:
+  id: item_id
+  field_flipbook_grid_item : 
+    - plugin: sub_process
+      source: field_flipbook_grid_item
+      process:
+        target_id:
+          - plugin: migration_lookup
+            migration: paragraph__flipbook_grid_item
+            source: value
+          - plugin: extract
+            index:
+              - 0
+        target_revision_id:
+          - plugin: migration_lookup
+            migration: paragraph__flipbook_grid_item
+            source: value
+          - plugin: extract
+            index:
+              - 1
+  field_number_of_columns: field_number_of_columns
+  field_overlay_background : field_overlay_background
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: flipbook_grid
+
+migration_dependencies:
+  required: 
+     - paragraph__flipbook_grid_item
+  optional: {  }
+
+
+  

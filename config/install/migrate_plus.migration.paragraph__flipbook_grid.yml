@@ -12,7 +12,8 @@ source:
   bundle: flipbook_grid
 process:
   id: item_id
-  field_flipbook_grid_item : 
+  revision_id: revision_id
+  field_flipbook_grid_item: 
     - plugin: sub_process
       source: field_flipbook_grid_item
       process:
